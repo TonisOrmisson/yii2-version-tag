@@ -30,13 +30,14 @@ class Version
     {
         exec('git branch', $branch);
         exec('git describe --tags', $tag);
-        $this->tag = isset($tag[0]) ? $tag[0] : $branch ;
-        $this->branch = $branch ;
+        $this->branch = isset($branch[0]) ? $branch[0] : '';
+        $this->tag = isset($tag[0]) ? $tag[0] : $this->branch ;
         exec('git rev-list HEAD | wc -l', $gitCommits);
         $this->commitsCount = intval($gitCommits);
         exec('git log -1', $gitHashLong);
         $this->commit = $gitHashLong;
     }
+
 
 
 
