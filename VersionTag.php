@@ -3,21 +3,22 @@ namespace tonisormisson\versiontag;
 
 
 use yii\base\Widget;
+use tonisormisson\version\Version;
 
 class VersionTag extends Widget
 {
+    public $path;
+
     /**
      * {@inheritdoc}
      */
     public function run()
     {
-        $model = new Version();
+        $model = new Version($this->path);
         $tooltip = "";
 
         if(!empty($model->commit)) {
-            foreach ($model->commit as $row) {
-                $tooltip .= $row . PHP_EOL;
-            }
+            $tooltip .= $model->commit . PHP_EOL;
         }
 
         return $this->render('tag', [
