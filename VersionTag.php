@@ -4,6 +4,8 @@ namespace tonisormisson\versiontag;
 
 use yii\base\Widget;
 use tonisormisson\version\Version;
+use yii\helpers\Html;
+
 
 class VersionTag extends Widget
 {
@@ -31,8 +33,15 @@ class VersionTag extends Widget
         $model = new Version($this->path);
         $tooltip = "";
 
-        if(!empty($model->commit)) {
-            $tooltip .= $model->commit . PHP_EOL;
+        if(!empty($model->author)) {
+            $tooltip .= "<strong>" . Html::encode($model->author)."</strong><br/>" . PHP_EOL;
+        }
+        if(!empty($model->time)) {
+            $tooltip .= Html::encode($model->time)."<br/>" . PHP_EOL;
+        }
+        if(!empty($model->subject)) {
+            $tooltip .= "<strong>" . Html::encode($model->tag).":</strong><br/>" . PHP_EOL;
+            $tooltip .= Html::encode($model->subject) . PHP_EOL;
         }
 
         return $this->render('tag', [

@@ -7,7 +7,7 @@
 
 <span id="version-tag">
     <?php if ($showTooltip): ?>
-        <span class="label label-default" data-toggle="tooltip" title="<?=$tooltip?>" data-placement="<?=$tooltipLocation?>"><?= $model->tag?></span>
+        <span class="label label-default" data-html="true" data-toggle="tooltip" title="<?=$tooltip?>" data-placement="<?=$tooltipLocation?>"><?= $model->tag?></span>
     <?php else: ?>
         <span class="label label-default" ><?= $model->tag?></span>
     <?php endif; ?>
