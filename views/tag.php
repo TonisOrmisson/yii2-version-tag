@@ -4,6 +4,11 @@
 /** @var string $tooltipLocation */
 /** @var bool $showTooltip */
 ?>
+<script>
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
 
 <span id="version-tag">
     <?php if ($showTooltip): ?>
